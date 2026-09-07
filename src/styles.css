@@ -167,6 +167,47 @@
 @keyframes gradient-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes float-soft { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
+/* === Scroll Reveal System === */
+.reveal { opacity: 0; transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+.reveal-up { transform: translateY(48px); }
+.reveal-left { transform: translateX(-48px); }
+.reveal-right { transform: translateX(48px); }
+.reveal-scale { transform: scale(0.92); }
+.reveal-fade { transform: none; }
+.reveal-visible { opacity: 1 !important; transform: none !important; }
+
+/* === Parallax Background Orbs === */
+.orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.12; will-change: transform; }
+.orb-1 { width: 520px; height: 520px; background: var(--primary); top: -8%; left: -6%; animation: orb-float-1 20s ease-in-out infinite; }
+.orb-2 { width: 420px; height: 420px; background: var(--violet); bottom: -8%; right: -6%; animation: orb-float-2 24s ease-in-out infinite; }
+.orb-3 { width: 360px; height: 360px; background: var(--cyan); top: 38%; left: 48%; animation: orb-float-3 28s ease-in-out infinite; }
+@keyframes orb-float-1 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(80px,50px) scale(1.05); } 66% { transform: translate(-40px,80px) scale(0.95); } }
+@keyframes orb-float-2 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-60px,-70px) scale(0.95); } 66% { transform: translate(50px,-40px) scale(1.08); } }
+@keyframes orb-float-3 { 0%,100% { transform: translate(-50%,0) scale(1); } 50% { transform: translate(-50%,-60px) scale(1.1); } }
+
+/* === Floating Particles === */
+.particle { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--cyan); opacity: 0; animation: particle-rise linear infinite; will-change: transform, opacity; }
+@keyframes particle-rise { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.5; } 85% { opacity: 0.5; } 100% { transform: translateY(-140px) translateX(15px); opacity: 0; } }
+
+/* === Hero Entrance === */
+@keyframes hero-entrance { 0% { opacity: 0; transform: translateY(30px); filter: blur(10px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+.hero-entrance { animation: hero-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-entrance-delay-1 { animation-delay: 0.15s; }
+.hero-entrance-delay-2 { animation-delay: 0.3s; }
+.hero-entrance-delay-3 { animation-delay: 0.45s; }
+.hero-entrance-delay-4 { animation-delay: 0.6s; }
+
+/* === Card Hover Glow === */
+.card-hover-glow { position: relative; }
+.card-hover-glow::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 70%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.card-hover-glow:hover::after { opacity: 1; }
+
+/* === Neural Line Pulse === */
+@keyframes line-pulse { 0%,100% { opacity: 0.15; } 50% { opacity: 0.65; } }
+
+/* === Scroll Indicator === */
+@keyframes scroll-indicator { 0%,100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(8px); opacity: 1; } }
+
 @utility technical-grid {
   background-image: linear-gradient(color-mix(in oklab, var(--primary) 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--primary) 7%, transparent) 1px, transparent 1px);
   background-size: 48px 48px;
